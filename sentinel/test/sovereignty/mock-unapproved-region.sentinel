@@ -1,0 +1,8 @@
+providers = {
+    "aws": {
+        "name": "aws",
+        "config": {
+            "region": "us-east-1",
+        },
+    },
+}

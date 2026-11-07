@@ -1,0 +1,10 @@
+{
+	"records": [
+		{
+			"key": "sovereignty",
+			"source": "./sovereignty.sentinel",
+			"sourceSum": "",
+			"dest": "/Users/owenc/Desktop/ATU/terraform-digital-sovereignty/sentinel/sovereignty.sentinel"
+		}
+	]
+}

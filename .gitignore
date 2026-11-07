@@ -19,3 +19,9 @@ terraform.rc
 
 # macOS files
 .DS_Store
+
+# Terraform plan files (may contain sensitive information)
+tfplan
+tfplan.json
+*.tfplan
+*.tfplan.json

@@ -1,0 +1,25 @@
+import "tfplan/v2" as tfplan
+
+# Find security groups being created or updated
+security_groups = filter tfplan.resource_changes as _, resource {
+	resource.type is "aws_security_group" and
+		resource.mode is "managed" and
+		resource.change.actions not contains "delete"
+}
+
+# Check whether an inbound rule exposes SSH to the internet
+unsafe_ssh = func(ingress_rule) {
+	return ingress_rule.from_port <= 22 and
+		ingress_rule.to_port >= 22 and
+		ingress_rule.protocol in ["tcp", "-1"] and
+		"0.0.0.0/0" in ingress_rule.cidr_blocks
+}
+
+# Reject security groups containing unrestricted SSH rules
+main = rule {
+	all security_groups as _, sg {
+		all sg.change.after.ingress as ingress_rule {
+			not unsafe_ssh(ingress_rule)
+		}
+	}
+}

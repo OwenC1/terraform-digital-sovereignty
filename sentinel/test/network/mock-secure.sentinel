@@ -1,0 +1,12 @@
+resource_changes = {
+    "aws_security_group.ec2_security": {
+        "type": "aws_security_group",
+        "mode": "managed",
+        "change": {
+            "actions": ["create"],
+            "after": {
+                "ingress": [],
+            },
+        },
+    },
+}

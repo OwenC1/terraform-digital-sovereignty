@@ -1,0 +1,20 @@
+PASS - metadata.sentinel
+  PASS - test/metadata/optional.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          false
+  PASS - test/metadata/required.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          true
+1 tests completed in 2.452334ms

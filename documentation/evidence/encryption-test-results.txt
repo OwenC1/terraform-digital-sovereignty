@@ -1,0 +1,20 @@
+PASS - encryption.sentinel
+  PASS - test/encryption/encrypted.hcl
+
+    trace:
+      encryption.sentinel:11:1 - Rule "main"
+        Description:
+          Require encrypted root EBS volumes
+
+        Value:
+          true
+  PASS - test/encryption/unencrypted.hcl
+
+    trace:
+      encryption.sentinel:11:1 - Rule "main"
+        Description:
+          Require encrypted root EBS volumes
+
+        Value:
+          false
+1 tests completed in 26.449542ms
