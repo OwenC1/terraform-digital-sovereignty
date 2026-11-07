@@ -1,0 +1,20 @@
+PASS - network.sentinel
+  PASS - test/network/secure.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
+
+        Value:
+          true
+  PASS - test/network/unrestricted-ssh.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
+
+        Value:
+          false
+1 tests completed in 978.167µs

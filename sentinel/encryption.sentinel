@@ -1,0 +1,18 @@
+import "tfplan/v2" as tfplan
+
+# Find EC2 instances being created or updated
+ec2_instances = filter tfplan.resource_changes as _, resource {
+	resource.type is "aws_instance" and
+		resource.mode is "managed" and
+		resource.change.actions not contains "delete"
+}
+
+# Require encrypted root EBS volumes
+main = rule {
+	all ec2_instances as _, instance {
+		length(instance.change.after.root_block_device) > 0 and
+			all instance.change.after.root_block_device as volume {
+				volume.encrypted is true
+			}
+	}
+}

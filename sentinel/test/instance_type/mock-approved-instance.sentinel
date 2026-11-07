@@ -1,0 +1,12 @@
+resource_changes = {
+    "aws_instance.example": {
+        "type": "aws_instance",
+        "mode": "managed",
+        "change": {
+            "actions": ["create"],
+            "after": {
+                "instance_type": "t3.micro",
+            },
+        },
+    },
+}

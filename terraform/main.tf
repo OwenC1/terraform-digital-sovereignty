@@ -1,6 +1,6 @@
 resource "aws_instance" "example" {
-  ami           = var.ami_id
-  instance_type = "t3.micro"
+  ami                    = var.ami_id
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.ec2_security.id]
 
   metadata_options {

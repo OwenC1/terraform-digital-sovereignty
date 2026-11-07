@@ -1,0 +1,18 @@
+import "tfplan/v2" as tfplan
+
+# Find EC2 instances being created or updated
+ec2_instances = filter tfplan.resource_changes as _, resource {
+	resource.type is "aws_instance" and
+		resource.mode is "managed" and
+		resource.change.actions not contains "delete"
+}
+
+# Require IMDSv2 for all EC2 instances
+main = rule {
+	all ec2_instances as _, instance {
+		length(instance.change.after.metadata_options) > 0 and
+			all instance.change.after.metadata_options as metadata {
+				metadata.http_tokens is "required"
+			}
+	}
+}

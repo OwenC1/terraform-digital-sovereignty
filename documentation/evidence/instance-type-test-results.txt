@@ -1,0 +1,20 @@
+PASS - instance_type.sentinel
+  PASS - test/instance_type/approved-instance.hcl
+
+    trace:
+      instance_type.sentinel:14:1 - Rule "main"
+        Description:
+          Every EC2 instance must use an approved type
+
+        Value:
+          true
+  PASS - test/instance_type/unapproved-instance.hcl
+
+    trace:
+      instance_type.sentinel:14:1 - Rule "main"
+        Description:
+          Every EC2 instance must use an approved type
+
+        Value:
+          false
+1 tests completed in 14.557042ms

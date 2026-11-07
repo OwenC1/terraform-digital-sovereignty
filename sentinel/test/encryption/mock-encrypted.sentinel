@@ -1,0 +1,16 @@
+resource_changes = {
+    "aws_instance.example": {
+        "type": "aws_instance",
+        "mode": "managed",
+        "change": {
+            "actions": ["create"],
+            "after": {
+                "root_block_device": [
+                    {
+                        "encrypted": true,
+                    },
+                ],
+            },
+        },
+    },
+}

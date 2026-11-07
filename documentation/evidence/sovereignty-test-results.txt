@@ -1,0 +1,14 @@
+PASS - sovereignty.sentinel
+  PASS - test/sovereignty/approved-region.hcl
+
+    trace:
+      sovereignty.sentinel:9:1 - Rule "main"
+        Value:
+          true
+  PASS - test/sovereignty/unapproved-region.hcl
+
+    trace:
+      sovereignty.sentinel:9:1 - Rule "main"
+        Value:
+          false
+1 tests completed in 20.851917ms

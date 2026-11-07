@@ -1,0 +1,90 @@
+PASS - metadata.sentinel
+  PASS - test/metadata/optional.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          false
+  PASS - test/metadata/required.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          true
+PASS - encryption.sentinel
+  PASS - test/encryption/encrypted.hcl
+
+    trace:
+      encryption.sentinel:11:1 - Rule "main"
+        Description:
+          Require encrypted root EBS volumes
+
+        Value:
+          true
+  PASS - test/encryption/unencrypted.hcl
+
+    trace:
+      encryption.sentinel:11:1 - Rule "main"
+        Description:
+          Require encrypted root EBS volumes
+
+        Value:
+          false
+PASS - instance_type.sentinel
+  PASS - test/instance_type/approved-instance.hcl
+
+    trace:
+      instance_type.sentinel:14:1 - Rule "main"
+        Description:
+          Every EC2 instance must use an approved type
+
+        Value:
+          true
+  PASS - test/instance_type/unapproved-instance.hcl
+
+    trace:
+      instance_type.sentinel:14:1 - Rule "main"
+        Description:
+          Every EC2 instance must use an approved type
+
+        Value:
+          false
+PASS - network.sentinel
+  PASS - test/network/secure.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
+
+        Value:
+          true
+  PASS - test/network/unrestricted-ssh.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
+
+        Value:
+          false
+PASS - sovereignty.sentinel
+  PASS - test/sovereignty/approved-region.hcl
+
+    trace:
+      sovereignty.sentinel:9:1 - Rule "main"
+        Value:
+          true
+  PASS - test/sovereignty/unapproved-region.hcl
+
+    trace:
+      sovereignty.sentinel:9:1 - Rule "main"
+        Value:
+          false
+5 tests completed in 39.6325ms
