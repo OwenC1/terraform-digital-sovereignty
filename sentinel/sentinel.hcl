@@ -22,3 +22,13 @@ policy "network" {
   source            = "./network.sentinel"
   enforcement_level = "hard-mandatory"
 }
+
+policy "provider_security" {
+  source            = "./provider_security.sentinel"
+  enforcement_level = "hard-mandatory"
+}
+
+policy "module_security" {
+  source            = "./module_security.sentinel"
+  enforcement_level = "hard-mandatory"
+}

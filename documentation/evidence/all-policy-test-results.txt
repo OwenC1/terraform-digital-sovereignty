@@ -1,22 +1,16 @@
-PASS - metadata.sentinel
-  PASS - test/metadata/optional.hcl
+PASS - provider_security.sentinel
+  PASS - test/provider_security/approved-provider.hcl
 
     trace:
-      metadata.sentinel:11:1 - Rule "main"
-        Description:
-          Require IMDSv2 for all EC2 instances
-
-        Value:
-          false
-  PASS - test/metadata/required.hcl
-
-    trace:
-      metadata.sentinel:11:1 - Rule "main"
-        Description:
-          Require IMDSv2 for all EC2 instances
-
+      provider_security.sentinel:9:1 - Rule "main"
         Value:
           true
+  PASS - test/provider_security/unapproved-provider.hcl
+
+    trace:
+      provider_security.sentinel:9:1 - Rule "main"
+        Value:
+          false
 PASS - encryption.sentinel
   PASS - test/encryption/encrypted.hcl
 
@@ -33,6 +27,38 @@ PASS - encryption.sentinel
       encryption.sentinel:11:1 - Rule "main"
         Description:
           Require encrypted root EBS volumes
+
+        Value:
+          false
+PASS - module_security.sentinel
+  PASS - test/module_security/approved-module.hcl
+
+    trace:
+      module_security.sentinel:9:1 - Rule "main"
+        Value:
+          true
+  PASS - test/module_security/unapproved-module.hcl
+
+    trace:
+      module_security.sentinel:9:1 - Rule "main"
+        Value:
+          false
+PASS - network.sentinel
+  PASS - test/network/secure.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
+
+        Value:
+          true
+  PASS - test/network/unrestricted-ssh.hcl
+
+    trace:
+      network.sentinel:19:1 - Rule "main"
+        Description:
+          Reject security groups containing unrestricted SSH rules
 
         Value:
           false
@@ -55,25 +81,6 @@ PASS - instance_type.sentinel
 
         Value:
           false
-PASS - network.sentinel
-  PASS - test/network/secure.hcl
-
-    trace:
-      network.sentinel:19:1 - Rule "main"
-        Description:
-          Reject security groups containing unrestricted SSH rules
-
-        Value:
-          true
-  PASS - test/network/unrestricted-ssh.hcl
-
-    trace:
-      network.sentinel:19:1 - Rule "main"
-        Description:
-          Reject security groups containing unrestricted SSH rules
-
-        Value:
-          false
 PASS - sovereignty.sentinel
   PASS - test/sovereignty/approved-region.hcl
 
@@ -87,4 +94,23 @@ PASS - sovereignty.sentinel
       sovereignty.sentinel:9:1 - Rule "main"
         Value:
           false
-5 tests completed in 39.6325ms
+PASS - metadata.sentinel
+  PASS - test/metadata/optional.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          false
+  PASS - test/metadata/required.hcl
+
+    trace:
+      metadata.sentinel:11:1 - Rule "main"
+        Description:
+          Require IMDSv2 for all EC2 instances
+
+        Value:
+          true
+7 tests completed in 34.270666ms
