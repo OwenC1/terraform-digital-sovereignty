@@ -1,14 +1,15 @@
-import "tfconfig/v2" as tfconfig
+import "tfplan/v2" as tfplan
 
 approved_regions = ["eu-west-1"]
 
-aws_providers = filter tfconfig.providers as _, provider {
-	provider.name is "aws"
+aws_resources = filter tfplan.planned_values.resources as _, resource {
+    resource.provider_name is "registry.terraform.io/hashicorp/aws"
 }
 
 main = rule {
-	length(aws_providers) > 0 and
-	all aws_providers as _, provider {
-		provider.config.region in approved_regions
-	}
+    length(aws_resources) > 0 and
+    tfplan.variables.aws_region.value in approved_regions and
+    all aws_resources as _, resource {
+        resource.values.region in approved_regions
+    }
 }

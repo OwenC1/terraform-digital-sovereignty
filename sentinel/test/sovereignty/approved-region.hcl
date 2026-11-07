@@ -1,4 +1,4 @@
-mock "tfconfig/v2" {
+mock "tfplan/v2" {
   module {
     source = "./mock-approved-region.sentinel"
   }

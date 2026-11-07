@@ -1,8 +1,16 @@
-providers = {
-    "aws": {
-        "name": "aws",
-        "config": {
-            "region": "eu-west-1",
+variables = {
+    "aws_region": {
+        "value": "eu-west-1",
+    },
+}
+
+planned_values = {
+    "resources": {
+        "aws_instance.example": {
+            "provider_name": "registry.terraform.io/hashicorp/aws",
+            "values": {
+                "region": "eu-west-1",
+            },
         },
     },
 }
