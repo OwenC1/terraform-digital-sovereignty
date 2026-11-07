@@ -1,0 +1,14 @@
+PASS - provider_security.sentinel
+  PASS - test/provider_security/approved-provider.hcl
+
+    trace:
+      provider_security.sentinel:9:1 - Rule "main"
+        Value:
+          true
+  PASS - test/provider_security/unapproved-provider.hcl
+
+    trace:
+      provider_security.sentinel:9:1 - Rule "main"
+        Value:
+          false
+1 tests completed in 24.946125ms

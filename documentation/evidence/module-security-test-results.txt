@@ -1,0 +1,14 @@
+PASS - module_security.sentinel
+  PASS - test/module_security/approved-module.hcl
+
+    trace:
+      module_security.sentinel:9:1 - Rule "main"
+        Value:
+          true
+  PASS - test/module_security/unapproved-module.hcl
+
+    trace:
+      module_security.sentinel:9:1 - Rule "main"
+        Value:
+          false
+1 tests completed in 13.866417ms
