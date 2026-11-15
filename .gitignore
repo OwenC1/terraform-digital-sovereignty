@@ -25,3 +25,6 @@ tfplan
 tfplan.json
 *.tfplan
 *.tfplan.json
+
+# Allow readable Terraform plan evidence
+!documentation/evidence/tfplan
